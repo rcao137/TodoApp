@@ -9,35 +9,36 @@ import android.view.View;
 import android.widget.EditText;
 
 public class EditItemActivity extends Activity {
-    private EditText etItem;
-    private int pos;
-    private String edText;
-    private int code;
-    
-	@Override
+	private EditText etItem;
+	private int pos;
+	private String edText;
+	private int code;
+
+	// Create EditItem Activity
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_item);
 		edText = getIntent().getStringExtra("itemname");
 		pos = getIntent().getIntExtra("pos", 0);
-		code = getIntent().getIntExtra("code", 0);
+		// code = getIntent().getIntExtra("code", 0);
 		etItem = (EditText) findViewById(R.id.edItemFld);
 		etItem.setText(edText);
 
 	}
-	
-	public void onSubmit(View v) {
-		  // closes the activity and returns to first screen
-		  // Prepare data intent 
-		  Intent data = new Intent();
-		  // Pass relevant data back as a result
-		  data.putExtra("itemname", etItem.getText().toString());
-		  data.putExtra("pos", pos);
-		  // Activity finished ok, return the data
-		  setResult(RESULT_OK, data); // set result code and bundle data for response
-		  finish(); // closes the activity, pass data to parent
-   }
 
+	// Callback for Save button
+	public void onSubmit(View v) {
+		// closes the activity and returns to main screen
+		// Prepare data intent
+		Intent data = new Intent();
+		// Pass relevant data back as a result
+		data.putExtra("itemname", etItem.getText().toString());
+		data.putExtra("pos", pos);
+		// Activity finished ok, return the data
+		setResult(RESULT_OK, data); // set result code and bundle data for
+									// response
+		finish(); // closes the activity, pass data to parent
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -46,8 +47,7 @@ public class EditItemActivity extends Activity {
 		getMenuInflater().inflate(R.menu.edit_item, menu);
 		return true;
 	}
-	
-	   
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle action bar item clicks here. The action bar will
@@ -59,6 +59,5 @@ public class EditItemActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-
 
 }
