@@ -20,10 +20,8 @@ public class EditItemActivity extends Activity {
 		setContentView(R.layout.activity_edit_item);
 		edText = getIntent().getStringExtra("itemname");
 		pos = getIntent().getIntExtra("pos", 0);
-		// code = getIntent().getIntExtra("code", 0);
 		etItem = (EditText) findViewById(R.id.edItemFld);
 		etItem.setText(edText);
-
 	}
 
 	// Callback for Save button
